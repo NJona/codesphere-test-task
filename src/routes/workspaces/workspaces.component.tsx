@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../../components/button/button.component";
-import WorkspacesTable from "../../components/workspaces-table/workspaces-table.component";
+import Button from "../../components/common/button/button.component";
+import WorkspacesTable from "../../components/workspace-components/workspaces-table/workspaces-table.component";
 import { selectTeam } from "../../store/team/team.selector";
 import { addWorkspace, changeWorkspace, removeWorkspace, setWorkspaces } from "../../store/workspaces/workspaces.action";
 import { selectWorkspaces } from "../../store/workspaces/workspaces.selector";
@@ -9,8 +9,8 @@ import { createWorkspace, listWorkspaces } from "../../utils/workspace-api.clien
 import { onWorkspacesStateChangedListener, WorkspaceChangedType } from "../../utils/workspace-stream.client";
 import styles from "./workspaces.module.css";
 import { ReactComponent as PlusIcon } from "../../assets/icons/plus.svg";
-import Modal from "../../components/modal/modal.component";
-import TextInput from "../../components/text-input/text-input.component";
+import Modal from "../../components/common/modal/modal.component";
+import TextInput from "../../components/common/text-input/text-input.component";
 
 /**
  * The Base Component for showing and editing Workspaces.

@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { selectTeam } from "../../store/team/team.selector";
-import { selectWorkspaces } from "../../store/workspaces/workspaces.selector";
-import { Workspace } from "../../types/workspace.type";
-import { deleteWorkspace } from "../../utils/workspace-api.client";
-import { DropdownOption } from "../dropdown/dropdown.component";
-import ListItem from "../list-item/list-item.component";
-import Table from "../table/table.component";
+import { selectTeam } from "../../../store/team/team.selector";
+import { selectWorkspaces } from "../../../store/workspaces/workspaces.selector";
+import { Workspace } from "../../../types/workspace.type";
+import { deleteWorkspace } from "../../../utils/workspace-api.client";
+import { DropdownOption } from "../../common/dropdown/dropdown.component";
+import ListItem from "../../common/list-item/list-item.component";
+import Table from "../../common/table/table.component";
 import WorkspaceTableHeader from "../workspace-table-header/workspace-table-header.component";
-import { ReactComponent as TrashIcon } from "../../assets/icons/trash-2.svg";
+import { ReactComponent as TrashIcon } from "../../../assets/icons/trash-2.svg";
 
 /**
  * An Implementation of the Table Component specific to Workspaces.

@@ -1,6 +1,6 @@
 import styles from "./list-item.module.css";
 import { useState } from "react";
-import { ReactComponent as MoreIcon } from "../../assets/icons/more.svg";
+import { ReactComponent as MoreIcon } from "../../../assets/icons/more.svg";
 import Dropdown, { DropdownOption } from "../dropdown/dropdown.component";
 
 export type ListItemProps = {
