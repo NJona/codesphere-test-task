@@ -78,3 +78,10 @@ Unfortunately, I was unable to call the API directly from the client due to rece
 The server is simple in structure and uses node-fetch to call the Codesphere Test Task API. Here is the link to the repository: https://github.com/NJona/codesphere-test-task-api-proxy
 
 The API URI can be changed to the initial Codesphere Test Task API URI in the `src/config.ts` file by setting the value of useAPIProxy to false.
+
+## Further UX improvements (Not implemented)
+
+- Loading Screen after create/delete workspace
+- Improved Loading Screen for initial reading of workspaces
+- After opening dropdown/modal, a click anywhere outside should close it
+- Responsive Components
