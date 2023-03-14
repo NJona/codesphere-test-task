@@ -59,6 +59,16 @@ I used redux for state management because it is designed to handle complex appli
 
 I used CSS Modules for this application, to encapsulate CSS styles within a specific component, preventing them from clashing with other styles in the application.
 
+### Test
+
+As a proof of work for testing the application i created a simple test to check if all workspaces are listed correctly. For this I used the react-testing-library with Jest. Fetching the workspaces is mocked with msw.
+
+Because this is only a test task, i didn't create tests for the other functionality, e.g.
+
+- open modal
+- create workspace
+- delete workspace
+
 ## Problems
 
 ### CORS

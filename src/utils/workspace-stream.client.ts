@@ -1,3 +1,5 @@
+import { config } from "../config";
+
 export type WorkspaceChangedType = {
     id: number;
     teamId: number;
@@ -5,12 +7,12 @@ export type WorkspaceChangedType = {
     deleted?: boolean;
 }
 
-const STREAM_BASE_URI = "wss://39314-3000.2.codesphere.com";
+const STREAM_BASE_URI = config.streamBaseUri;
 
 export function onWorkspacesStateChangedListener(teamId: number, callback: (changedWorkspace: WorkspaceChangedType) => void): WebSocket {
     const webSocket = new WebSocket(`${STREAM_BASE_URI}/${teamId}`);
-    webSocket.onopen = () => console.log(`ws opened for team with id ${teamId}`);
-    webSocket.onclose = () => console.log('ws closed');
+    webSocket.onopen = () => console.log(`workspaces websocket stream opened for team with id ${teamId}`);
+    webSocket.onclose = () => console.log('workspaces websocket stream closed');
     webSocket.onmessage = (event) => {
         const data = JSON.parse(event.data);
         callback(data);

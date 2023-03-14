@@ -9,7 +9,6 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const team = authenticateMock();
-    console.log(team);
     dispatch(setTeam(team));
   }, [dispatch]);
 

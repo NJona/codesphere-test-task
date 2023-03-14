@@ -44,12 +44,9 @@ export default function Workspaces() {
 
     useEffect(() => {
         if (!currentTeam || !workspaces) {
-            console.log("returning because current team is undefined");
             return;
         }
-        console.log("Starting web socket with Team Id: " + currentTeam.id);
         const webSocket = onWorkspacesStateChangedListener(currentTeam.id, (changedWorkspace: WorkspaceChangedType) => {
-            console.log(changedWorkspace);
             if (changedWorkspace.deleted) {
                 dispatch(removeWorkspace(workspaces, changedWorkspace));
                 return;
@@ -62,7 +59,6 @@ export default function Workspaces() {
         });
         return () => {
             if (webSocket) {
-                console.log("closing web socket");
                 webSocket.close();
             }
         }
