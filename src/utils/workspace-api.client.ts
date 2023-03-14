@@ -36,9 +36,10 @@ export async function listWorkspaces(teamId: number): Promise<Workspace[]> {
 }
 
 /**
- * List all workspaces for requested teamId.
+ * Delete a workspace based on it's workspaceId and teamId.
+ * Throws an Error if something went wrong on the request.
  * @param teamId The teamId of the current logged in Team.
- * @returns {Promise<Workspace[]>}
+ * @param workspaceId The id of the workspace to delete.
  */
 export async function deleteWorkspace(teamId: number, workspaceId: number) {
     const deleteRes = await fetch(`${API_BASE_URI}/deleteWorkspace`,
@@ -61,6 +62,12 @@ export async function deleteWorkspace(teamId: number, workspaceId: number) {
     return;
 }
 
+/**
+ * Creates a Workspace based on the teamId. Creates an Id on the Server.
+ * Throws an Error if something went wrong on the request.
+ * @param teamId The teamId of the current logged in Team.
+ * @param workspaceName The name of the workspace to create.
+ */
 export async function createWorkspace(teamId: number, workspaceName: string) {
     const createRes = await fetch(`${API_BASE_URI}/createWorkspace`,
         {
