@@ -1,0 +1,14 @@
+.textInput {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0.25rem 0.5rem;
+    background-color: transparent;
+    color: #858196;
+    border-color: #282532;
+    border: 1px solid;
+    border-radius: 3px;
+}

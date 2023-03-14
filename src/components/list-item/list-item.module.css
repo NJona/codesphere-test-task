@@ -1,0 +1,11 @@
+.listItem {
+  display: flex;
+}
+
+.listItemLabel {
+  flex: 5;
+}
+
+.optionsIcon {
+    flex: 1;
+  }

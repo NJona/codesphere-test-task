@@ -1,0 +1,70 @@
+.modalHeader {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.modalHeading {
+  margin: 0;
+  font-weight: 600;
+  color: #fff;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.closeIcon {
+  height: 28px;
+  width: 28px;
+}
+
+.modal .content {
+  padding: 3rem 2rem 0.625rem 2rem;
+}
+
+.modal .actions {
+  padding: 0.625rem 2rem 2rem 2rem;
+}
+.modal .actions .submitButton {
+  border: 0;
+  background: #814bf6;
+  color: #fff;
+  width: 100%;
+  border-radius: 3px;
+  padding: 6px 12px 6px 12px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.modal {
+  background-color: #181621;
+  width: 500px;
+  border: 1px solid #ccc;
+  transition: 1.1s ease-out;
+  box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal.off {
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(8px);
+  transform: scale(0.33);
+  box-shadow: 1rem 0 0 rgba(0, 0, 0, 0.2);
+}

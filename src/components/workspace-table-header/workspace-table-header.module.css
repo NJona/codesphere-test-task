@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+}
+
+.headerName {
+  flex: 5;
+}
+
+.headerAction {
+    flex: 1;
+  }
