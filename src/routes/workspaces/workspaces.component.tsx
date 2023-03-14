@@ -107,7 +107,7 @@ export default function Workspaces() {
                     submitBtnLabel={"Create"}
                     modalHeading={"Create Workspace"}
                 >
-                    <TextInput onInput={onHandleWorkspaceNameInput} />
+                    <TextInput onInput={onHandleWorkspaceNameInput} placeholder="Workspace name" />
                 </Modal>
             </div>
         </div>

@@ -18,7 +18,7 @@ export default function WorkspacesTable() {
     const team = useSelector(selectTeam);
 
     if (!team || !workspaces) {
-        return <div>loading...</div>;
+        return <div>Loading...</div>;
     }
 
     const deleteWorkspaceHandler = async (workspaceToDelete: Workspace) => {

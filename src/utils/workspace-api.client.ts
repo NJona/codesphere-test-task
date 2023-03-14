@@ -5,7 +5,7 @@ import { Workspace } from "../types/workspace.type";
  * Because i had CORS Problems using the given API Url, i created a Proxy Server which allows CORS Requests.
  * Can be changed in the config by setting @useAPIProxy to false.
  */
-const API_BASE_URI = config.useAPIProxy ? config.apiBaseUriProxy : config.apiBaseUri;
+export const API_BASE_URI = config.useAPIProxy ? config.apiBaseUriProxy : config.apiBaseUri;
 
 /**
  * List all workspaces for requested teamId.
