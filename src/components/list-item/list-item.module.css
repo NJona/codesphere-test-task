@@ -1,11 +1,21 @@
 .listItem {
   display: flex;
+  justify-content: space-between;
+  padding: 1.1875rem 1.6875rem 1.1875rem 0.5rem;
+  border-bottom: 1px solid #282532;
 }
 
-.listItemLabel {
-  flex: 5;
+.itemLabel {
+  color: #cdc8e4;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
 }
 
-.optionsIcon {
-    flex: 1;
-  }
+.optionsIcon{
+  cursor: pointer;
+}
+
+.dropdownContainer {
+  position: relative;
+}

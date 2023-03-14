@@ -1,11 +1,14 @@
 .header {
   display: flex;
+  justify-content: space-between;
+  background-color: #0f0e15;
+  padding: 0.3125rem 1rem;
+  border-bottom: 1px solid #282532;
 }
 
-.headerName {
-  flex: 5;
+.headerLabel {
+  color: #646173;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
 }
-
-.headerAction {
-    flex: 1;
-  }

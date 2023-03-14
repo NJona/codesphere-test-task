@@ -1,3 +1,24 @@
-.icon {
-    
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.625rem 0.375rem 0.625rem;
+  align-items: center;
+  border: none;
+  border-radius: 3px;
+  background-color: #814bf6;
+  color: inherit;
+  cursor: pointer;
+}
+
+.button svg {
+  height: 14px;
+  width: 14px;
+}
+
+.btnLabel {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  margin-left: 0.375rem;
 }

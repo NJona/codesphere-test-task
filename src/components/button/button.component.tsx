@@ -9,9 +9,9 @@ export type ButtonProps = {
 
 export default function Button(props: ButtonProps) {
     return (
-        <button onClick={props.onClick}>
-            <span className={styles.icon}>{props.icon}</span>
-            {props.label}
+        <button onClick={props.onClick} className={styles.button}>
+            {props.icon}
+            <span className={styles.btnLabel}>{props.label}</span>
         </button>
     )
 }

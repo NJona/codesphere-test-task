@@ -88,10 +88,14 @@ export default function Workspaces() {
     }
 
     return (
-        <div className={styles.workspaceContainer}>
-            <div className={styles.buttonContainer}>
-                <Button onClick={toggleModal} label="New Workspace" icon={<PlusIcon />} />
-                <WorkspacesTable />
+        <div className={styles.container}>
+            <div className={styles.workspaceContainer}>
+                <div className={styles.buttonContainer}>
+                    <Button onClick={toggleModal} label="New Workspace" icon={<PlusIcon />} />
+                </div>
+                <div className={styles.tableContainer}>
+                    <WorkspacesTable />
+                </div>
                 <Modal onClose={toggleModal} onSubmit={createWorkspaceHandler} show={showModal} submitBtnLabel={"Create"} modalHeading={"Create Workspace"}>
                     <TextInput onInput={onHandleWorkspaceNameInput} />
                 </Modal>

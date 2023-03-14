@@ -1,0 +1,17 @@
+.container {
+  max-width: 32.5rem;
+  margin: 0 auto;
+}
+
+.workspaceContainer {
+  padding: 1.25rem 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tableContainer {
+  margin-top: 1.25rem;
+}
