@@ -11,6 +11,11 @@ export type ModalProps = {
     modalHeading: string;
 }
 
+/**
+ * Generic Submit/Close Modal. Input has to be handled outside of this modal.
+ * @param props 
+ * @returns 
+ */
 export default function Modal(props: ModalProps) {
     const onClose = () => {
         props.onClose();

@@ -11,7 +11,12 @@ export type DropdownOption = {
     onClick: () => void
 }
 
-
+/**
+ * Generic Dropdown with customizable options. 
+ * Icons will only be displayed if they are provided. There is no default icon.
+ * @param props 
+ * @returns 
+ */
 export default function Dropdown(props: DropdownOptions) {
     return (
         <div className={styles.dropdown}>

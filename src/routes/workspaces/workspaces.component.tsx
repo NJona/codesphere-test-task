@@ -12,27 +12,30 @@ import { ReactComponent as PlusIcon } from "../../assets/icons/plus.svg";
 import Modal from "../../components/modal/modal.component";
 import TextInput from "../../components/text-input/text-input.component";
 
+/**
+ * The Base Component for showing and editing Workspaces.
+ */
 export default function Workspaces() {
     const dispatch = useDispatch();
 
-    const [error, setError] = useState(false);
+    const [getWorkspacesError, setGetWorkspacesError] = useState(false);
     const currentTeam = useSelector(selectTeam);
     const workspaces = useSelector(selectWorkspaces);
     const [workspaceName, setWorkspaceName] = useState("");
-
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         if (!currentTeam) {
             return;
         }
         const getWorkspaces = async () => {
-            setError(false);
+            setGetWorkspacesError(false);
             try {
                 const workspacesArray = await listWorkspaces(currentTeam.id);
                 dispatch(setWorkspaces(workspacesArray));
             } catch (error) {
                 console.error(error);
-                setError(true);
+                setGetWorkspacesError(true);
             }
         };
 
@@ -41,11 +44,12 @@ export default function Workspaces() {
 
     useEffect(() => {
         if (!currentTeam || !workspaces) {
-            console.log("returning because current team is undefined")
+            console.log("returning because current team is undefined");
             return;
         }
-        console.log("Current Team Id: " + currentTeam.id)
+        console.log("Starting web socket with Team Id: " + currentTeam.id);
         const webSocket = onWorkspacesStateChangedListener(currentTeam.id, (changedWorkspace: WorkspaceChangedType) => {
+            console.log(changedWorkspace);
             if (changedWorkspace.deleted) {
                 dispatch(removeWorkspace(workspaces, changedWorkspace));
                 return;
@@ -58,12 +62,12 @@ export default function Workspaces() {
         });
         return () => {
             if (webSocket) {
+                console.log("closing web socket");
                 webSocket.close();
             }
         }
     }, [dispatch, currentTeam, workspaces]);
 
-    const [showModal, setShowModal] = useState(false);
     const toggleModal = () => {
         setShowModal(!showModal);
     };
@@ -83,7 +87,7 @@ export default function Workspaces() {
 
     const onHandleWorkspaceNameInput = (name: string) => { setWorkspaceName(name); }
 
-    if (error) {
+    if (getWorkspacesError) {
         return <div>Something went wrong...</div>
     }
 
@@ -96,7 +100,13 @@ export default function Workspaces() {
                 <div className={styles.tableContainer}>
                     <WorkspacesTable />
                 </div>
-                <Modal onClose={toggleModal} onSubmit={createWorkspaceHandler} show={showModal} submitBtnLabel={"Create"} modalHeading={"Create Workspace"}>
+                <Modal
+                    onClose={toggleModal}
+                    onSubmit={createWorkspaceHandler}
+                    show={showModal}
+                    submitBtnLabel={"Create"}
+                    modalHeading={"Create Workspace"}
+                >
                     <TextInput onInput={onHandleWorkspaceNameInput} />
                 </Modal>
             </div>

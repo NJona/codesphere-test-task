@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectTeam } from "../../store/team/team.selector";
-import { removeWorkspace } from "../../store/workspaces/workspaces.action";
 import { selectWorkspaces } from "../../store/workspaces/workspaces.selector";
 import { Workspace } from "../../types/workspace.type";
 import { deleteWorkspace } from "../../utils/workspace-api.client";
@@ -10,8 +9,11 @@ import Table from "../table/table.component";
 import WorkspaceTableHeader from "../workspace-table-header/workspace-table-header.component";
 import { ReactComponent as TrashIcon } from "../../assets/icons/trash-2.svg";
 
+/**
+ * An Implementation of the Table Component specific to Workspaces.
+ * Handles Deleting Workspaces by providing a settings dropdown.
+ */
 export default function WorkspacesTable() {
-    const dispatch = useDispatch();
     const workspaces = useSelector(selectWorkspaces);
     const team = useSelector(selectTeam);
 
@@ -22,7 +24,6 @@ export default function WorkspacesTable() {
     const deleteWorkspaceHandler = async (workspaceToDelete: Workspace) => {
         try {
             await deleteWorkspace(team.id, workspaceToDelete.id);
-            dispatch(removeWorkspace(workspaces, workspaceToDelete));
         } catch (error) {
             console.error(error);
             alert("Something went wrong");
