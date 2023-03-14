@@ -1,39 +1,18 @@
+import { config } from "../config";
 import { Workspace } from "../types/workspace.type";
 
-const API_BASE_URI = "https://39314-3000.2.codesphere.com";
+/**
+ * Because i had CORS Problems using the given API Url, i created a Proxy Server which allows CORS Requests.
+ * Can be changed in the config by setting @useAPIProxy to false.
+ */
+const API_BASE_URI = config.useAPIProxy ? config.apiBaseUriProxy : config.apiBaseUri;
 
-const WORKSPACE_MOCKS: { [teamId: number]: Workspace[] } = {
-    1: [
-        {
-            "id": 3,
-            "name": "Workspace 1"
-        },
-        {
-            "id": 4,
-            "name": "Workspace 2"
-        },
-        {
-            "id": 5,
-            "name": "Workspace 3"
-        },
-        {
-            "id": 6,
-            "name": "Workspace 4"
-        },
-        {
-            "id": 7,
-            "name": "Workspace 5"
-        }
-    ]
-};
-
+/**
+ * List all workspaces for requested teamId.
+ * @param teamId The teamId of the current logged in Team.
+ * @returns {Promise<Workspace[]>}
+ */
 export async function listWorkspaces(teamId: number): Promise<Workspace[]> {
-    if (process.env.NODE_ENV === "development") {
-        if (!WORKSPACE_MOCKS[teamId]) {
-            return [];
-        }
-        return WORKSPACE_MOCKS[teamId];
-    }
     const body = JSON.stringify({
         teamId: teamId
     });
@@ -56,11 +35,12 @@ export async function listWorkspaces(teamId: number): Promise<Workspace[]> {
     return data;
 }
 
+/**
+ * List all workspaces for requested teamId.
+ * @param teamId The teamId of the current logged in Team.
+ * @returns {Promise<Workspace[]>}
+ */
 export async function deleteWorkspace(teamId: number, workspaceId: number) {
-    if (process.env.NODE_ENV === "development") {
-        WORKSPACE_MOCKS[teamId] = WORKSPACE_MOCKS[teamId].filter((workspace) => workspace.id !== workspaceId);
-        return WORKSPACE_MOCKS[teamId];
-    }
     const deleteRes = await fetch(`${API_BASE_URI}/deleteWorkspace`,
         {
             method: "POST",
@@ -81,17 +61,7 @@ export async function deleteWorkspace(teamId: number, workspaceId: number) {
     return;
 }
 
-export async function createWorkspace(teamId: number, workspaceName: string): Promise<Workspace | undefined> {
-    if (process.env.NODE_ENV === "development") {
-        const lastId = WORKSPACE_MOCKS[teamId][WORKSPACE_MOCKS[teamId].length - 1].id;
-        const newId = lastId + 1;
-        const newWorkspace = {
-            id: newId,
-            name: workspaceName
-        };
-        WORKSPACE_MOCKS[teamId].push(newWorkspace);
-        return newWorkspace;
-    }
+export async function createWorkspace(teamId: number, workspaceName: string) {
     const createRes = await fetch(`${API_BASE_URI}/createWorkspace`,
         {
             method: "POST",
